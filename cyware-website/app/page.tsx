@@ -1,13 +1,15 @@
-import Navbar from "@/components/navbar"
+import Hero from "@/components/Hero"
+import Navbar from "@/components/Navbar"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0e1218]">
-      <Navbar />
-      <div className="container mx-auto px-4 py-12 text-white">
-        <h1 className="text-4xl font-bold">Welcome to CYWARE</h1>
-        <p className="mt-4 text-xl">Your content goes here</p>
-      </div>
-    </main>
+<main className="relative h-screen">
+  <div className="absolute inset-0 bg-gradient-to-r from-[#002c8c] via-[#5b00a7] to-[#00a58d]" />
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70" />
+  <div className="relative z-10">
+    <Navbar />
+    <Hero />
+  </div>
+</main>
   )
 }
