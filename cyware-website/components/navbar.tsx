@@ -110,7 +110,7 @@ export default function Navbar() {
           {/* Right: Get a Demo + About + Mobile Menu */}
           <div className="flex items-center gap-4">
             <Link
-              href="/demo"
+              href="/contact"
               className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-white text-white bg-[#004e3c] hover:bg-[#00624d] text-sm font-medium transition"
             >
               Get a Demo
