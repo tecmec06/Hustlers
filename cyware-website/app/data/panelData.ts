@@ -7,10 +7,10 @@ const panelData = [
       buttonLabel: 'Explore more',
       buttonLink: '#',
       imageSrc: '/ctix-page.svg',
-      name: 'CtixDashboard',
+      name: 'IntelExchange',
       reverse: false,
       iconSrc: '/ctix-logo.svg',
-      iconName: 'CtixIcon',
+      iconName: 'IntelExchange',
       highlightGradient: 'from-fuchsia-700 to-white',
     },
     {
@@ -19,10 +19,10 @@ const panelData = [
       buttonLabel: 'Explore more',
       buttonLink: '#',
       imageSrc: '/co-page.svg',
-      name: 'CoDashboard',
+      name: 'Orchestrate',
       reverse: false,
       iconSrc: '/co-logo.svg',
-      iconName: 'CoIcon',
+      iconName: 'Orchestrate',
       highlightGradient: 'from-indigo-600 to-white',
     },
     {
@@ -31,10 +31,10 @@ const panelData = [
       buttonLabel: 'Explore more',
       buttonLink: '#',
       imageSrc: '/csap-page.svg',
-      name: 'CsapDashboard',
+      name: 'Collaborate',
       reverse: false,
       iconSrc: '/csap-logo.svg',
-      iconName: 'CsapIcon',
+      iconName: 'Collaborate',
       highlightGradient: 'from-teal-700 to-white',
     }
   ]

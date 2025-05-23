@@ -24,22 +24,16 @@ export async function fetchOrGenerateAlts(): Promise<Record<string, string>> {
     ? {
         'CywareLogo': 'Awareness',
         'QuaterbackStars': 'whoooo hoooo',
-        'CoDashboard' : 'playbook run',
-        'CtixDashboard' : 'intel run',
-        'CsapDashboard' : 'alert run',
-        'CoIcon': 'playbook run',
-        'CtixIcon' : 'intel run',
-        'CsapIcon' : 'alert run',
+        'Orchestrate': 'playbook run',
+        'IntelExchange' : 'intel run',
+        'Collaborate' : 'alert run',
       }
     : {
         'CywareLogo': 'Awareness',
         'QuaterbackStars': 'whoooo hoooo',
-        'CoDashboard' : 'playbook run',
-        'CtixDashboard' : 'intel run',
-        'CsapDashboard' : 'alert run',
-        'CoIcon': 'playbook run',
-        'CtixIcon' : 'intel run',
-        'CsapIcon' : 'alert run',
+        'Orchestrate': 'playbook run',
+        'IntelExchange' : 'intel run',
+        'Collaborate' : 'alert run',
       }
 }
 
