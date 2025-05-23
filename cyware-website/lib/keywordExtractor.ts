@@ -1,12 +1,12 @@
-let cachedKeywords: string[] = []
 let lastGenerated = 0
+let cachedKeywords: string[] = []
+let toggle = false // Used to alternate between the two keyword sets
 
 export async function extractKeywords(content: string): Promise<string[]> {
   const now = Date.now()
   const refreshInterval = 1000 * 60 * 30 // 30 minutes
 
   if (now - lastGenerated > refreshInterval || cachedKeywords.length === 0) {
-    // Replace with actual logic or external API call
     cachedKeywords = await fetchOrGenerateKeywords(content)
     lastGenerated = now
   }
@@ -14,7 +14,15 @@ export async function extractKeywords(content: string): Promise<string[]> {
   return cachedKeywords
 }
 
-async function fetchOrGenerateKeywords(content: string): Promise<string[]> {
-  // Simulate real NLP/ML/AI extraction logic here
-  return ['updated', 'cybersecurity', 'intel','testing', 'automation']
+export async function fetchOrGenerateKeywords(content: string): Promise<string[]> {
+  // Alternate between two keyword arrays
+  toggle = !toggle
+  return toggle
+    ? ['updated', 'cybersecurity', 'test1','intel', 'automation']
+    : ['refreshed', 'defense', 'security','test2', 'platform']
+}
+
+// ✅ Setter to force cache expiry
+export function shiftLastGeneratedBack(ms: number) {
+  lastGenerated -= ms
 }
