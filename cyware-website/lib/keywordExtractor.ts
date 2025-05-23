@@ -4,7 +4,7 @@ let toggle = false // Used to alternate between the two keyword sets
 
 export async function extractKeywords(content: string): Promise<string[]> {
   const now = Date.now()
-  const refreshInterval = 1000 * 60 * 30 // 30 minutes
+  const refreshInterval = 1000 * 60 * 2 // 30 minutes
 
   if (now - lastGenerated > refreshInterval || cachedKeywords.length === 0) {
     cachedKeywords = await fetchOrGenerateKeywords(content)

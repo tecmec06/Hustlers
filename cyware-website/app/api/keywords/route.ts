@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     const { content } = await req.json()
 
     // Force cache to expire by shifting the timestamp back 30 minutes
-    const THIRTY_MINUTES = 1000 * 60 * 30
+    const THIRTY_MINUTES = 1000 * 60 * 2
     shiftLastGeneratedBack(THIRTY_MINUTES)
 
     // Now extract keywords (this will regenerate them)
