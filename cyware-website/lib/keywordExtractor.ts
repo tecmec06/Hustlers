@@ -1,18 +1,28 @@
 let lastGenerated = 0
 let cachedKeywords: string[] = []
 let cachedDescription: string = ''
+export let cachedQuote: string = ''
 
-export async function extractKeywords(): Promise<[string[], string]> {
+export function setCachedQuote(value: string) {
+  cachedQuote = value
+}
+
+export async function extractKeywords(): Promise<[string[], string, string]> {
   const now = Date.now()
-  const refreshInterval = 1000 * 60 * 30 // 30 minutes
+  const refreshInterval = 1000 * 10 // 30 minutes
 
   if (now - lastGenerated > refreshInterval || cachedKeywords.length === 0) {
+    console.log('Generating keywords...')
     cachedKeywords = await generateAndFetchKeywords()
     cachedDescription = await generateDescriptionBasedOnKeywords(cachedKeywords)
+    cachedQuote = await generateQuoteBasedOnKeywords(cachedKeywords)
     lastGenerated = now
   }
+  else {
+    console.log('Using cached keywords...')
+  }
 
-  return [cachedKeywords, cachedDescription]
+  return [cachedKeywords, cachedDescription, cachedQuote]
 }
 
 
@@ -114,5 +124,52 @@ export async function generateDescriptionBasedOnKeywords(cachedKeywords: string[
   } catch (error: unknown) {
     console.error('Description generation failed:', error)
     throw new Error('Failed to generate SEO meta description.')
+  }
+}
+
+export async function generateQuoteBasedOnKeywords(cachedKeywords: string[]): Promise<string> {
+  const apiKey = process.env.GEMINI_API_KEY
+
+  if (!apiKey) {
+    throw new Error('GEMINI_API_KEY is not set in environment variables')
+  }
+
+  const prompt = `
+    Generate a concise, powerful quote related to cybersecurity threat intelligence that creatively incorporates or is inspired by the following keywords: ${cachedKeywords.join(',')}.
+    The quote should be professional, original, and thought-provoking — suitable for a cybersecurity-focused audience such as analysts, CISOs, and threat hunters.
+    Do not explain the quote. Just return the quote in plain text.
+  `.trim()
+
+  const requestBody = {
+    contents: [{ parts: [{ text: prompt }] }]
+  }
+
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody),
+    })
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      throw new Error(`Gemini API error: ${response.status} - ${errorText}`)
+    }
+
+    const json = await response.json()
+
+    const quote = json?.candidates?.[0]?.content?.parts?.[0]?.text?.trim()
+
+    if (!quote) {
+      throw new Error('No quote generated or unexpected format from Gemini API.')
+    }
+
+    return quote
+
+  } catch (error: unknown) {
+    console.error('Quote generation failed:', error)
+    throw new Error('Failed to fetch quote.')
   }
 }

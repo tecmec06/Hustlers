@@ -8,9 +8,10 @@ import ThreatIntelPanel from "@/components/ThreatIntelPanel"
 import { extractKeywords } from '@/lib/keywordExtractor'
 import { CywareQuarterback } from '@/components/cyware-quarterback/cyware-quarterback'
 import { CywareStatsSection } from '@/components/cyware-stat-section'
+import DynamicQuote from '@/components/DynamicQuote'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [keywords, description] = await extractKeywords()
+  const [keywords, description, quote] = await extractKeywords()
 
   return {
     title: 'Cybersecurity Automation from Cyware | Cyware',
@@ -39,6 +40,7 @@ export default function Home() {
       <CywareQuarterback />
     </div>
     <CywareStatsSection />
+    <DynamicQuote />
   </div>
 </main>
   )

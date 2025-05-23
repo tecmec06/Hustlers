@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { extractKeywords, shiftLastGeneratedBack } from '@/lib/keywordExtractor'
+import { extractKeywords, shiftLastGeneratedBack} from '@/lib/keywordExtractor'
 
 const THIRTY_MINUTES_MS = 35 * 60 * 1000
 
@@ -9,9 +9,9 @@ export async function POST(req: Request) {
     shiftLastGeneratedBack(THIRTY_MINUTES_MS)
 
     // Generate fresh keywords
-    const [keywords, description] = await extractKeywords()
+    const [keywords, description, quote] = await extractKeywords()
 
-    return NextResponse.json({ success: true, keywords, description }, { status: 200 })
+    return NextResponse.json({ success: true, keywords, description, quote }, { status: 200 })
   } catch (error: unknown) {
     console.error('[API] /api/keywords - Keyword generation failed:', error)
 
