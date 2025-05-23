@@ -2,6 +2,7 @@ import { Star, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import "./architecture.css"
 import Image from "next/image"
+import SeoImage from "../SeoImage"
 
 interface CywarePlatformProps {
   className?: string
@@ -67,9 +68,9 @@ export function CywarePlatform({ className }: CywarePlatformProps) {
                 <div className="absolute inset-0 rotate-[135deg] rounded-sm bg-[#a600ce] opacity-80"></div>
                 <div className="absolute left-1/4 top-1/4 h-1/2 w-1/2 rotate-[225deg] rounded-sm bg-[#00c689]"></div>
               </div> */}
-              <Image 
+              <SeoImage
                 src="/cyware-logo.svg"
-                alt="Cyware Logo"
+                name="CywareLogo"
                 width={48}
                 height={48}
                 className="h-12 w-12"
@@ -161,7 +162,7 @@ export function CywarePlatform({ className }: CywarePlatformProps) {
               <div className="rounded-full bg-[#4a035b] px-8 py-3 text-center shadow-[0_0_20px_rgba(74,3,91,0.5)]">
                 <div className="mb-1 flex items-center justify-center gap-2">
                   <div className="relative">
-                    <Image src="/stars-2.svg" alt="Cyware Logo" width={40} height={40} />
+                    <SeoImage src="/stars-2.svg" name="QuaterbackStars" width={40} height={40} />
                   </div>
                   <h3 className="text-xl font-medium text-white">Cyware Quarterback AI</h3>
                 </div>

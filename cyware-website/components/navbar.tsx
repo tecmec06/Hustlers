@@ -19,6 +19,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import SeoImage from "./SeoImage";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,9 +43,9 @@ export default function Navbar() {
           {/* Left: Logo + Desktop Nav */}
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center">
-              <Image
+              <SeoImage
                 src="https://images.ctfassets.net/zcd9ovevodsf/5hMiOaLhP23VkyyE4RDfqL/df2b83c535d0a063c407753014faf930/cyware-logo.svg"
-                alt="Cyware"
+                name="Cyware"
                 width={150}
                 height={40}
                 className="h-10 w-auto"
