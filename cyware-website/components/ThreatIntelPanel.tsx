@@ -2,9 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import SeoImage from './SeoImage'
 
 type ThreatIntelPanelProps = {
   iconSrc?: string
+  iconName?: string
   title: string
   highlightedPhrases: string[]
   highlightGradient?: string
@@ -12,11 +14,13 @@ type ThreatIntelPanelProps = {
   buttonLabel: string
   buttonLink: string
   imageSrc: string
+  name: string
   reverse?: boolean
 }
 
 export default function ThreatIntelPanel({
   iconSrc,
+  iconName,
   title,
   highlightedPhrases,
   highlightGradient,
@@ -25,6 +29,7 @@ export default function ThreatIntelPanel({
   buttonLink,
   imageSrc,
   reverse = false,
+  name,
 }: ThreatIntelPanelProps) {
   const flexDirection = reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'
 
@@ -32,9 +37,9 @@ export default function ThreatIntelPanel({
     <section className={`mx-16 flex flex-col ${flexDirection} items-center justify-between gap-12 px-6 py-20`}>
       {/* Left Side */}
       <div className="w-[440px] p-6 rounded-2xl max-w-lg h-[380px] border-dashed border-1 border-[#595c69] flex flex-col justify-between">
-        {iconSrc && (
+        {iconSrc && iconName&&(
           <div className="mb-6">
-            <Image src={iconSrc} alt="Panel Icon" width={48} height={48} />
+            <SeoImage src={iconSrc} name={iconName} width={48} height={48} />
           </div>
         )}
         <h2 className=" text-[36px] lg:text-4xl font-bold mb-4 leading-tight">
@@ -68,9 +73,9 @@ export default function ThreatIntelPanel({
 
       {/* Right Side */}
       <div className="max-w-3xl w-full">
-        <Image
+        <SeoImage
+          name={name}
           src={imageSrc}
-          alt="Threat Panel Image"
           width={1200}
           height={600}
           className="rounded-2xl shadow-lg w-full h-auto"

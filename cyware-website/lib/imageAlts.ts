@@ -22,16 +22,24 @@ export async function fetchOrGenerateAlts(): Promise<Record<string, string>> {
 
   return toggleAlt
     ? {
-        'orchestrate' : 'Island supremacy',
-        'Cyware': 'Cyware Supremacy',
         'CywareLogo': 'Awareness',
         'QuaterbackStars': 'whoooo hoooo',
+        'CoDashboard' : 'playbook run',
+        'CtixDashboard' : 'intel run',
+        'CsapDashboard' : 'alert run',
+        'CoIcon': 'playbook run',
+        'CtixIcon' : 'intel run',
+        'CsapIcon' : 'alert run',
       }
     : {
-        'orchestrate' : 'Playbook supremacy',
-        'Cyware': 'Hail Cyware',
         'CywareLogo': 'Awareness',
         'QuaterbackStars': 'whoooo hoooo',
+        'CoDashboard' : 'playbook run',
+        'CtixDashboard' : 'intel run',
+        'CsapDashboard' : 'alert run',
+        'CoIcon': 'playbook run',
+        'CtixIcon' : 'intel run',
+        'CsapIcon' : 'alert run',
       }
 }
 
