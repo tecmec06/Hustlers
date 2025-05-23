@@ -30,6 +30,11 @@ export default function Home() {
     <Hero />
     <ResourceSection />
     <CywarePlatform />
+    <div className="mt-90">
+      {panelData.map((panel, index) => (
+          <ThreatIntelPanel key={index} {...panel} />
+        ))}
+    </div>
   </div>
 </main>
   )

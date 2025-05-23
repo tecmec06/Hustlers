@@ -7,6 +7,7 @@ type ThreatIntelPanelProps = {
   iconSrc?: string
   title: string
   highlightedPhrases: string[]
+  highlightGradient?: string
   description?: string
   buttonLabel: string
   buttonLink: string
@@ -18,6 +19,7 @@ export default function ThreatIntelPanel({
   iconSrc,
   title,
   highlightedPhrases,
+  highlightGradient,
   description,
   buttonLabel,
   buttonLink,
@@ -39,18 +41,17 @@ export default function ThreatIntelPanel({
           {title.split(' ').map((word, idx) => {
             const cleanWord = word.replace(/[.,]/g, '')
             const isHighlighted = highlightedPhrases.includes(cleanWord)
-            const lineNumber = Math.floor(idx / 4) // Assuming roughly 4 words per line
+            const lineNumber = Math.floor(idx / 2)
+
+            const gradient = highlightGradient ?? 'from-purple-500 to-white'
+            const className = isHighlighted && lineNumber < 2
+              ? `bg-gradient-to-br ${gradient} bg-clip-text text-transparent`
+              : isHighlighted
+              ? 'text-white'
+              : ''
+
             return (
-              <span
-                key={idx}
-                className={
-                  isHighlighted && lineNumber < 2
-                    ? 'bg-gradient-to-br from-purple-500 to-white bg-clip-text text-transparent'
-                    : isHighlighted
-                    ? 'text-white'
-                    : ''
-                }
-              >
+              <span key={idx} className={className}>
                 {word}{' '}
               </span>
             )
