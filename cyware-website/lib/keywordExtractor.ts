@@ -1,18 +1,33 @@
-let lastGenerated = 0
-let cachedKeywords: string[] = []
-let cachedDescription: string = ''
+const globalKeywordCache = globalThis as unknown as {
+  lastGenerated?: number
+  cachedKeywords?: string[]
+  cachedDescription?: string
+}
+
+if (!globalKeywordCache.lastGenerated) {
+  globalKeywordCache.lastGenerated = 0
+  globalKeywordCache.cachedKeywords = []
+  globalKeywordCache.cachedDescription = ''
+}
+
+const REFRESH_INTERVAL = 30 * 60 * 1000 // 30 mins
 
 export async function extractKeywords(): Promise<[string[], string]> {
   const now = Date.now()
-  const refreshInterval = 1000 * 60 * 30 // 30 minutes
 
-  if (now - lastGenerated > refreshInterval || cachedKeywords.length === 0) {
-    cachedKeywords = await generateAndFetchKeywords()
-    cachedDescription = await generateDescriptionBasedOnKeywords(cachedKeywords)
-    lastGenerated = now
+  if (
+    now - globalKeywordCache.lastGenerated! > REFRESH_INTERVAL ||
+    !globalKeywordCache.cachedKeywords?.length
+  ) {
+    globalKeywordCache.cachedKeywords = await generateAndFetchKeywords()
+    globalKeywordCache.cachedDescription = await generateDescriptionBasedOnKeywords(globalKeywordCache.cachedKeywords)
+    globalKeywordCache.lastGenerated = now
+    console.log('Generated new keywords + description')
+  } else {
+    console.log('Serving cached keywords + description')
   }
 
-  return [cachedKeywords, cachedDescription]
+  return [globalKeywordCache.cachedKeywords!, globalKeywordCache.cachedDescription!]
 }
 
 
@@ -69,9 +84,8 @@ export async function generateAndFetchKeywords(): Promise<string[]> {
   }
 }
 
-// Setter to force cache expiry
 export function shiftLastGeneratedBack(ms: number) {
-  lastGenerated -= ms
+  globalKeywordCache.lastGenerated! -= ms
 }
 
 export async function generateDescriptionBasedOnKeywords(cachedKeywords: string[]): Promise<string> {
