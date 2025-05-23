@@ -1,5 +1,4 @@
 import { getQuote } from '@/lib/quoteGenerator'
-
 export default async function DynamicQuote() {
   const quote = getQuote() // Runs server-side only
 

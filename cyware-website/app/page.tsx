@@ -9,6 +9,8 @@ import { extractKeywords } from '@/lib/keywordExtractor'
 import { CywareQuarterback } from '@/components/cyware-quarterback/cyware-quarterback'
 import { CywareStatsSection } from '@/components/cyware-stat-section'
 import DynamicQuote from '@/components/DynamicQuote'
+export const dynamic = 'force-dynamic' 
+
 export async function generateMetadata(): Promise<Metadata> {
   const [keywords, description] = await extractKeywords()
 
