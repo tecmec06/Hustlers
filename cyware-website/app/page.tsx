@@ -10,6 +10,7 @@ import { CywareQuarterback } from '@/components/cyware-quarterback/cyware-quarte
 import { CywareStatsSection } from '@/components/cyware-stat-section'
 import DynamicQuote from '@/components/DynamicQuote'
 export const dynamic = 'force-dynamic' 
+import {Banner} from '@/components/Banner'
 
 export async function generateMetadata(): Promise<Metadata> {
   const [keywords, description] = await extractKeywords()
@@ -27,7 +28,7 @@ export default function Home() {
   <div className="absolute inset-0 bg-gradient-to-r from-[#002c8c] via-[#5b00a7] to-[#00a58d]" />
   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70" />
   <div className="relative z-10">
-    {/* <Banner />   */}
+    <Banner />  
     <Navbar />
     <Hero />
     <ResourceSection />

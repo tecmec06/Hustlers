@@ -71,8 +71,6 @@ export async function generateAndFetchKeywords(): Promise<string[]> {
       .map((kw: string) => kw.trim().toLowerCase())
       .filter(Boolean)
 
-    // console.log('[Generated Keywords]', keywords)
-
     if (keywords.length === 0) {
       throw new Error('No keywords generated or unexpected format from Gemini API.')
     }

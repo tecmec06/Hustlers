@@ -69,10 +69,6 @@ async function generateQuote(): Promise<string> {
       throw new Error('No quote generated or unexpected format from Gemini API.')
     }
 
-    console.log('Kyewowrd', keywordList)
-
-    console.log('New quote generated:', quote)
-
     return quote
 
   } catch (error: unknown) {
