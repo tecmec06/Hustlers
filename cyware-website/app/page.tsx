@@ -1,26 +1,35 @@
-import { Banner } from "@/components/Banner"
-import Hero from "@/components/Hero"
+import { Metadata } from 'next'
 import Navbar from "@/components/navbar"
+import Hero from "@/components/Hero"
 import ResourceSection from "@/components/ResourceSection"
 import { CywarePlatform } from "@/components/Architecture/Architecture"
 import panelData from './data/panelData'
 import ThreatIntelPanel from "@/components/ThreatIntelPanel"
+import { extractKeywords } from '@/lib/keywordExtractor'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const keywords = await extractKeywords(
+    'Cybersecurity platform offering threat intelligence and automation.'
+  )
+
+  return {
+    title: 'Cyware Security Platform',
+    description: 'A cutting-edge cybersecurity platform with threat intelligence and automation.',
+    keywords,
+  }
+}
+
 export default function Home() {
   return (
-<main className="relative h-[675px]">
+<main className="relative h-screen">
   <div className="absolute inset-0 bg-gradient-to-r from-[#002c8c] via-[#5b00a7] to-[#00a58d]" />
   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70" />
   <div className="relative z-10">
-    <Banner />
+    {/* <Banner />   */}
     <Navbar />
     <Hero />
     <ResourceSection />
     <CywarePlatform />
-    <div className="mt-90">
-      {panelData.map((panel, index) => (
-          <ThreatIntelPanel key={index} {...panel} />
-        ))}
-      </div>
   </div>
 </main>
   )
