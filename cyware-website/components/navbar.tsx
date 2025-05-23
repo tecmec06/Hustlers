@@ -38,13 +38,7 @@ export default function Navbar() {
           isScrolled ? "shadow-lg" : ""
         }`}
       >
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#002c8c] via-[#5b00a7] to-[#00a58d]" />
-        {/* Black translucent overlay */}
-        <div className="absolute inset-0 bg-black/25" />
-
-        {/* Foreground content */}
-        <div className="relative z-10 flex items-center justify-between px-6 py-3 text-white">
+        <div className="bg-black/25 relative z-10 flex items-center justify-between px-6 py-3 text-white ">
           {/* Left: Logo + Desktop Nav */}
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center">
