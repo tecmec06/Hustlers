@@ -2,6 +2,7 @@
 
 import React from 'react';
 import LogoCarousel from './LogoCarousel';
+import { partnerLogos } from '@/lib/data/partnerLogos';
 export default function Hero() {
   return (
     <section className="relative z-10 py-20 overflow-hidden">
@@ -41,7 +42,7 @@ export default function Hero() {
       </div>
       {/* Logo Carousel */}
       <div className="mt-16">
-        <LogoCarousel />
+        <LogoCarousel logos={partnerLogos} />
       </div>
     </section>
   );

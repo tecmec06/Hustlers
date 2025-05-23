@@ -1,17 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown, ChevronRight, Check, ArrowRight } from "lucide-react"
-import LogoCarousel from "./components/logo-carousel"
+import LogoCarousel from "@/components/LogoCarousel"
+import { partnerLogos } from "@/lib/data/partnerLogos"
 
 export default function Home() {
-  const partnerLogos = [
-    { name: "UBER", src: "/logos/uber.svg?height=40&width=80" },
-    { name: "OTIS", src: "/logos/otis.svg?height=40&width=80" },
-    { name: "ARVEST", src: "/logos/arvest.svg?height=40&width=80" },
-    { name: "PWC", src: "/logos/pwc.svg?height=80&width=80" },
-    { name: "OPTIV", src: "/logos/optiv.png?height=100&width=80" },
-  ]
-
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#070707] via-[#0a0a2e] to-[#1330b9] relative overflow-hidden">
       {/* Grid overlay */}
