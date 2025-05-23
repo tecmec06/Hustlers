@@ -31,14 +31,14 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full px-4 py-4 transition-all duration-300`}
+      className={`sticky top-0 z-[100] w-full px-4 pt-12 transition-all duration-300`}
     >
       <div
         className={`relative mx-auto max-w-7xl rounded-full overflow-hidden border border-white/20 backdrop-blur-md ${
           isScrolled ? "shadow-lg" : ""
         }`}
       >
-        <div className="bg-black/25 relative z-10 flex items-center justify-between px-6 py-3 text-white ">
+        <div className="bg-black/25 relative z-10 flex items-center justify-between px-6 py-2 text-white ">
           {/* Left: Logo + Desktop Nav */}
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center">
@@ -51,7 +51,7 @@ export default function Navbar() {
               />
             </Link>
 
-            <NavigationMenu className="hidden lg:flex">
+            <NavigationMenu className="hidden lg:flex relative z-[101]">
               <NavigationMenuList>
                 {["Platform", "Solutions", "Partners", "Resources"].map(
                   (title) => (

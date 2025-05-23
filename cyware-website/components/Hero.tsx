@@ -20,7 +20,7 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-            <button className="flex items-center gap-2 rounded-full bg-[#004e3c] hover:bg-[#00624d] text-white px-6 py-3 text-sm font-medium transition">
+            <button className="border border-white/60 flex items-center gap-2 rounded-full bg-[#004e3c] hover:bg-[#00624d] text-white px-6 py-3 text-sm font-medium transition">
                     Get a Demo
                 <span className="inline-block text-xl leading-none">→</span>
             </button>
@@ -33,7 +33,7 @@ export default function Hero() {
       </div>
 
       {/* Right Side Image Box */}
-      <div className="hidden lg:block absolute top-10 right-[-10px] h-[480px] w-[620px] rounded-xl overflow-hidden border border-gray-900 shadow-2xl">
+      <div className="hidden lg:block absolute top-10 right-[-10px] h-[420px] w-[620px] rounded-xl overflow-hidden border border-gray-900 shadow-2xl">
         <img
           src="https://go.cyware.com/hs-fs/hubfs/Screenshot%202025-02-12%20at%204.21.58%20PM.png?width=1500&height=1272&name=Screenshot%202025-02-12%20at%204.21.58%20PM.png"
           alt="AI Threat Intel"

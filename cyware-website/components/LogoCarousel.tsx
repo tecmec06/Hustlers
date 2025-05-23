@@ -20,7 +20,7 @@ export default function LogoCarousel({
   width = 120,
 }: LogoCarouselProps) {
   return (
-    <div className="w-full py-12 overflow-hidden bg-black">
+    <div className="w-full py-8 overflow-hidden bg-black">
       <Marquee
         gradient={false}
         speed={speed}
