@@ -6,6 +6,7 @@ import { CywarePlatform } from "@/components/Architecture/Architecture"
 import panelData from './data/panelData'
 import ThreatIntelPanel from "@/components/ThreatIntelPanel"
 import { extractKeywords } from '@/lib/keywordExtractor'
+import { CywareQuarterback } from '@/components/cyware-quarterback/cyware-quarterback'
 
 export async function generateMetadata(): Promise<Metadata> {
   const keywords = await extractKeywords(
@@ -34,6 +35,9 @@ export default function Home() {
       {panelData.map((panel, index) => (
           <ThreatIntelPanel key={index} {...panel} />
         ))}
+    </div>
+    <div className="bg-black min-h-screen">
+      <CywareQuarterback />
     </div>
   </div>
 </main>
