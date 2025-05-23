@@ -1,6 +1,6 @@
 import { getQuote } from '@/lib/quoteGenerator'
 export default async function DynamicQuote() {
-  const quote = getQuote() // Runs server-side only
+  const quote = await getQuote() // Runs server-side only
 
   return (
     <div className="flex justify-center items-center">

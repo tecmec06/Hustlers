@@ -1,4 +1,4 @@
-const globalKeywordCache = globalThis as unknown as {
+export const globalKeywordCache = globalThis as unknown as {
   lastGenerated?: number
   cachedKeywords?: string[]
   cachedDescription?: string

@@ -1,4 +1,5 @@
 import NodeCache from 'node-cache'
+import {globalKeywordCache} from './keywordExtractor'
 
 // Shared cache holder in global context (avoids re-instantiation)
 const globalForQuoteCache = globalThis as unknown as {
@@ -12,7 +13,7 @@ function createCache(ttl: number) {
 
 // Initialize once
 if (!globalForQuoteCache.quoteCache) {
-  globalForQuoteCache.refreshInterval = parseInt(process.env.QUOTE_REFRESH_INTERVAL || '60', 10)
+  globalForQuoteCache.refreshInterval = parseInt(process.env.QUOTE_REFRESH_INTERVAL || '1', 10)
   globalForQuoteCache.quoteCache = createCache(globalForQuoteCache.refreshInterval)
 }
 
@@ -25,22 +26,74 @@ const quotes = [
   "Encryption is not a crime."
 ]
 
-export function getQuote(): string {
+async function generateQuote(): Promise<string> {
+  const apiKey = process.env.GEMINI_API_KEY
+
+  if (!apiKey) {
+    throw new Error('GEMINI_API_KEY is not set in environment variables')
+  }
+
+  const keywords = globalKeywordCache.cachedKeywords ?? ['threat intelligence','IOC management','cyber threat detection','STIX/TAXII integration','real-time threat analysis']
+
+  const keywordList = keywords.join(', ')
+
+  const prompt = `
+    Generate a concise, powerful quote related to cybersecurity threat intelligence that creatively incorporates or is inspired by the following keywords: ${keywordList}.
+    The quote should be professional, original, and thought-provoking — suitable for a cybersecurity-focused audience such as analysts, CISOs, and threat hunters.
+    Do not explain the quote. Just return the quote in plain text.
+  `.trim()
+
+  const requestBody = {
+    contents: [{ parts: [{ text: prompt }] }]
+  }
+
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody),
+    })
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      throw new Error(`Gemini API error: ${response.status} - ${errorText}`)
+    }
+
+    const json = await response.json()
+
+    const quote = json?.candidates?.[0]?.content?.parts?.[0]?.text?.trim()
+
+    if (!quote) {
+      throw new Error('No quote generated or unexpected format from Gemini API.')
+    }
+
+    console.log('Kyewowrd', keywordList)
+
+    console.log('New quote generated:', quote)
+
+    return quote
+
+  } catch (error: unknown) {
+    console.error('Quote generation failed:', error)
+    throw new Error('Failed to fetch quote.')
+  }
+}
+
+export async function getQuote(): Promise<string> {
   const cache = globalForQuoteCache.quoteCache!
   const cached = cache.get<string>(QUOTE_KEY)
   if (cached) {
-    console.log('Serving cached quote:', cached)
     return cached
   }
 
-  const newQuote = quotes[Math.floor(Math.random() * quotes.length)]
+  const newQuote = await generateQuote()
   cache.set(QUOTE_KEY, newQuote)
-  console.log('Generated new quote:', newQuote)
   return newQuote
 }
 
 export function updateRefreshInterval(newTTL: number) {
-  console.log(`Quote refresh interval updated to ${newTTL}s`)
   globalForQuoteCache.refreshInterval = newTTL
   globalForQuoteCache.quoteCache = createCache(newTTL)
 }
