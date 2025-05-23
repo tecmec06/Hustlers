@@ -2,6 +2,7 @@ import { Banner } from "@/components/Banner"
 import Hero from "@/components/Hero"
 import Navbar from "@/components/navbar"
 import ResourceSection from "@/components/ResourceSection"
+import { CywarePlatform } from "@/components/Architecture/Architecture"
 export default function Home() {
   return (
 <main className="relative h-screen">
@@ -12,6 +13,7 @@ export default function Home() {
     <Navbar />
     <Hero />
     <ResourceSection />
+    <CywarePlatform />
   </div>
 </main>
   )

@@ -1,0 +1,20 @@
+.cyware-platform {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.clip-triangle-left {
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.clip-triangle-right {
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+.clip-triangle-bottom {
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.clip-triangle-bottom-inverted {
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
