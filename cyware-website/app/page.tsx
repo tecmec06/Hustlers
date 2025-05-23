@@ -10,13 +10,11 @@ import { CywareQuarterback } from '@/components/cyware-quarterback/cyware-quarte
 import { CywareStatsSection } from '@/components/cyware-stat-section'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const keywords = await extractKeywords(
-    'Cybersecurity platform offering threat intelligence and automation.'
-  )
+  const [keywords, description] = await extractKeywords()
 
   return {
-    title: 'Cyware Security Platform',
-    description: 'A cutting-edge cybersecurity platform with threat intelligence and automation.',
+    title: 'Cybersecurity Automation from Cyware | Cyware',
+    description,
     keywords,
   }
 }
