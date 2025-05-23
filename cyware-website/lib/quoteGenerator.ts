@@ -13,7 +13,7 @@ function createCache(ttl: number) {
 
 // Initialize once
 if (!globalForQuoteCache.quoteCache) {
-  globalForQuoteCache.refreshInterval = parseInt(process.env.QUOTE_REFRESH_INTERVAL || '1', 10)
+  globalForQuoteCache.refreshInterval = parseInt(process.env.QUOTE_REFRESH_INTERVAL ?? '604800', 10)
   globalForQuoteCache.quoteCache = createCache(globalForQuoteCache.refreshInterval)
 }
 
