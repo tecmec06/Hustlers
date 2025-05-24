@@ -73,7 +73,7 @@ export default function ThreatIntelPanel({
           alt="Threat Panel Image"
           width={1200}
           height={600}
-          className="rounded-2xl shadow-lg w-full h-auto"
+          className="rounded-2xl shadow-lg w-full h-auto transition-transform duration-300 ease-in-out hover:scale-105"
         />
       </div>
     </section>
