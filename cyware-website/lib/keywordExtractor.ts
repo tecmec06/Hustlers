@@ -11,12 +11,20 @@ export async function extractKeywords(): Promise<[string[], string, string]> {
   const now = Date.now()
   const refreshInterval = 1000 * 10 // 30 minutes
 
+  console.log("Checking for extracting components bro...")
+  console.log("now", now)
+  console.log("lastGenerated", lastGenerated)
+  console.log("refreshInterval", refreshInterval)
+
   if (now - lastGenerated > refreshInterval || cachedKeywords.length === 0) {
     console.log('Generating keywords...')
     cachedKeywords = await generateAndFetchKeywords()
     cachedDescription = await generateDescriptionBasedOnKeywords(cachedKeywords)
     cachedQuote = await generateQuoteBasedOnKeywords(cachedKeywords)
     lastGenerated = now
+    console.log("extracting keyword", cachedKeywords)
+    console.log("extracting description", cachedDescription)
+    console.log("extracting quote", cachedQuote)
   }
   else {
     console.log('Using cached keywords...')

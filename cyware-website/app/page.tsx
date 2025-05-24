@@ -11,7 +11,11 @@ import { CywareStatsSection } from '@/components/cyware-stat-section'
 import DynamicQuote from '@/components/DynamicQuote'
 
 export async function generateMetadata(): Promise<Metadata> {
+  console.log("Starting generateMetadata bro...")
   const [keywords, description, quote] = await extractKeywords()
+  console.log("keywords", keywords)
+  console.log("description", description)
+  console.log("quote", quote)
 
   return {
     title: 'Cybersecurity Automation from Cyware | Cyware',

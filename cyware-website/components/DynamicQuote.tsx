@@ -1,6 +1,7 @@
 import { cachedQuote } from "@/lib/keywordExtractor"
 
 export default async function DynamicQuote() {
+  console.log(cachedQuote)
 
   return (
     <div className="flex justify-center items-center">
