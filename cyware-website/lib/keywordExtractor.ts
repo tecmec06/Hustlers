@@ -29,13 +29,75 @@ export async function extractKeywords(): Promise<[string[], string, string]> {
 }
 
 
+async function get_top_5_keywords_based_on_trend(keywords: string[]): Promise<string[]> {
+  const SERPAPI_KEY = process.env.SERPAPI_KEY
+  if (!SERPAPI_KEY) throw new Error('SERPAPI_KEY not set in environment')
+
+  const fetchTrendData = async (keyword: string) => {
+    const url = `https://serpapi.com/search.json?engine=google_trends&q=${encodeURIComponent(
+      keyword
+    )}&hl=en&date=today 12-m&data_type=TIMESERIES&api_key=${SERPAPI_KEY}`
+
+    const res = await fetch(url)
+    if (!res.ok) {
+      throw new Error(`Failed to fetch trend data for "${keyword}": ${res.statusText}`)
+    }
+
+    const json = await res.json()
+    return json
+  }
+
+  const calculateAverageInterest = (trendData: any): number => {
+    const timeline = trendData?.interest_over_time?.timeline_data ?? []
+    let total = 0
+    let count = 0
+
+    for (const item of timeline) {
+      const values = item?.values ?? []
+      for (const val of values) {
+        const extracted = typeof val.extracted_value === 'number'
+          ? val.extracted_value
+          : parseFloat(val.extracted_value)
+
+        if (!isNaN(extracted)) {
+          total += extracted
+          count++
+        }
+      }
+    }
+
+    return count > 0 ? total / count : 0
+  }
+
+  const scoredKeywords: { keyword: string, score: number }[] = []
+
+  for (const keyword of keywords) {
+    try {
+      const data = await fetchTrendData(keyword)
+      const score = calculateAverageInterest(data)
+      scoredKeywords.push({ keyword, score })
+    } catch (err) {
+      console.warn(`Skipped keyword "${keyword}" due to error:`, err)
+    }
+  }
+
+  console.log("scoredKeywords", scoredKeywords)
+
+  // Sort by score descending and return top 5
+  return scoredKeywords
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5)
+    .map(k => k.keyword)
+}
+
+
 export async function generateAndFetchKeywords(): Promise<string[]> {
   const apiKey = process.env.GEMINI_API_KEY
   if (!apiKey) throw new Error('GEMINI_API_KEY is not set')
 
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
   const prompt = `
-    Identify and return 5 trending SEO keywords relevant to a cyber threat intelligence platform.
+    Identify and return 10 trending SEO keywords relevant to a cyber threat intelligence platform.
     Return only comma-separated keywords without explanation.
   `.trim()
 
@@ -58,8 +120,14 @@ export async function generateAndFetchKeywords(): Promise<string[]> {
   const rawText = json?.candidates?.[0]?.content?.parts?.[0]?.text ?? ''
   const keywords = rawText.split(',').map((kw: string) => kw.trim().toLowerCase()).filter(Boolean)
 
-  if (keywords.length === 0) throw new Error('No keywords generated')
-  return keywords
+  console.log("keywords", keywords)
+
+  const final_keywords = await get_top_5_keywords_based_on_trend(keywords)
+
+  console.log("final_keywords", final_keywords)
+
+  if (final_keywords.length === 0) throw new Error('No keywords generated')
+  return final_keywords
 }
 
 export async function generateDescriptionBasedOnKeywords(keywords: string[]): Promise<string> {
