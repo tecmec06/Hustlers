@@ -17,7 +17,7 @@ export function VideoPlayer() {
 
   return (
     <video ref={videoRef} className={styles.video} loop muted playsInline>
-      <source src="/sample_video.mp4" type="video/mp4" />
+      <source src="https://videos.ctfassets.net/zcd9ovevodsf/6W7GNytm5ueFaMcSOsYRqR/dadac48db807d0621a0abcb6fa997035/Cyware_Quarterback_AI_Overview_Video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   )
