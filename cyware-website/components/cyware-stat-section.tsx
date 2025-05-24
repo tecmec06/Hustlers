@@ -48,11 +48,11 @@ export function CywareStatsSection({
       {showGrid && <StatsGrid />}
       <div className="relative z-10 px-4 py-16">
         {title && (
-          <h2
+          <h1
             className={cn("text-white text-3xl md:text-4xl lg:text-5xl font-medium text-center mb-4", titleClassName)}
           >
             {title}
-          </h2>
+          </h1>
         )}
         {subtitle && (
           <p

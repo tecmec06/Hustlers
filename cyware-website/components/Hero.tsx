@@ -20,7 +20,7 @@ export default function Hero() {
           {/* Left Content */}
           <div className="lg:w-1/2 w-full text-white">
             <div className="min-h-[11.5rem] mb-6">
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
                 {typedText.length <= specialStart ? (
                   <>
                     {typedText}
@@ -47,7 +47,7 @@ export default function Hero() {
                     <span className="animate-blink inline-block w-[1px] h-[1em] bg-white ml-1 align-bottom" />
                   </>
                 )}
-              </h1>
+              </h2>
             </div>
 
             <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-xl">
