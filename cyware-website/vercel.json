@@ -1,7 +1,13 @@
 {
   "redirects": [
     {
-      "source": "https://www.cyware.vercel.app/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.cyware.vercel.app"
+        }
+      ],
       "destination": "https://cyware.vercel.app/:path*",
       "permanent": true
     },
