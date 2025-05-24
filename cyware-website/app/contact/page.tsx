@@ -18,7 +18,7 @@ export default function Home() {
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-12 grid md:grid-cols-2 gap-10 items-start">
         {/* Left Content */}
         <section>
-          <h1 className="text-5xl font-bold mb-6">See Cyware in Action</h1>
+          <h2 className="text-5xl font-bold mb-6">See Cyware in Action</h2>
           <p className="text-gray-300 text-lg mb-8">
             Our cybersecurity experts will show you how Cyware enables you to:
           </p>

@@ -32,9 +32,9 @@ export function CywarePlatform({ className }: CywarePlatformProps) {
       {/* Content Container */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-16">
         {/* Heading */}
-        <h1 className="mb-8 text-center text-4xl font-medium text-white md:text-5xl">
+        <h3 className="mb-8 text-center text-4xl font-medium text-white md:text-5xl">
           Think Faster. Act Smarter. Stay Ahead.
-        </h1>
+        </h3>
 
         {/* Learn More Button */}
         <div className="mb-12 flex justify-center">
@@ -75,9 +75,9 @@ export function CywarePlatform({ className }: CywarePlatformProps) {
                 height={48}
                 className="h-12 w-12"
               />
-              <h1 className="text-3xl font-medium text-white md:text-4xl">
+              <h2 className="text-3xl font-medium text-white md:text-4xl">
                 Continuous Threat Operationalization Platform
-              </h1>
+              </h2>
             </div>
 
             {/* Three Column Layout */}
@@ -207,14 +207,19 @@ export function CywarePlatform({ className }: CywarePlatformProps) {
           </div>
 
           {/* Bottom Security Domains - positioned on the green triangle */}
-          <div className="absolute bottom-0 left-1/2 z-20 w-full translate-y-[250%] -translate-x-1/2">
-            <div className="grid grid-cols-2 gap-6 md:grid-cols-6">
+          <div className="absolute bottom-0 left-1/2 z-20 w-fit -translate-x-1/2 translate-y-[250%]">
+            {/* First row - 2 blocks */}
+            <div className="flex justify-center gap-6 mb-6">
               <div className="rounded-lg border-2 border-[#00c689] bg-black/90 backdrop-blur-sm p-3 text-center text-white shadow-[0_0_30px_rgba(0,198,137,0.5)]">
                 Monitoring & Detection
               </div>
               <div className="rounded-lg border-2 border-[#00c689] bg-black/90 backdrop-blur-sm p-3 text-center text-white shadow-[0_0_30px_rgba(0,198,137,0.5)]">
                 Endpoint Security
               </div>
+            </div>
+
+            {/* Second row - 3 blocks */}
+            <div className="flex justify-center gap-6">
               <div className="rounded-lg border-2 border-[#00c689] bg-black/90 backdrop-blur-sm p-3 text-center text-white shadow-[0_0_30px_rgba(0,198,137,0.5)]">
                 Cloud Security
               </div>
@@ -223,9 +228,6 @@ export function CywarePlatform({ className }: CywarePlatformProps) {
               </div>
               <div className="rounded-lg border-2 border-[#00c689] bg-black/90 backdrop-blur-sm p-3 text-center text-white shadow-[0_0_30px_rgba(0,198,137,0.5)]">
                 IAM
-              </div>
-              <div className="rounded-lg border-2 border-[#00c689] bg-black/90 backdrop-blur-sm p-3 text-center text-white shadow-[0_0_30px_rgba(0,198,137,0.5)]">
-                ITSM
               </div>
             </div>
           </div>

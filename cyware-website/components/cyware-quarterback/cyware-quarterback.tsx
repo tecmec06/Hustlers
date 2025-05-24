@@ -18,7 +18,7 @@ export function CywareQuarterback({ className = "" }: CywareQuarterbackProps) {
       <div className={`${styles.purpleGradientSecondary} ${styles.gradientEffect}`}></div>
 
       <div className={styles.header}>
-        <h1 className={styles.title}>Powered by Cyware Quarterback AI</h1>
+        <h3 className={styles.title}>Powered by Cyware Quarterback AI</h3>
         <p className={styles.subtitle}>Agentic AI built for security teams. Designed for swift action.</p>
       </div>
 

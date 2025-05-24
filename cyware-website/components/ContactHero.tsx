@@ -8,9 +8,9 @@ export default function ContactHero() {
       <div className="container mx-auto flex flex-col lg:flex-row items-start justify-between gap-12">
         {/* Left Side */}
         <div className="lg:w-1/2 text-white">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             See Cyware in Action
-          </h1>
+          </h2>
           <p className="mt-4 text-lg text-gray-300 max-w-xl">
             Our cybersecurity experts will show you how Cyware enables you to:
           </p>
