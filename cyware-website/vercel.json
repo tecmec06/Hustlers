@@ -4,6 +4,16 @@
       "source": "https://www.cyware.vercel.app/:path*",
       "destination": "https://cyware.vercel.app/:path*",
       "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
