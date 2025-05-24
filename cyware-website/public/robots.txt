@@ -1,0 +1,44 @@
+# Global rules for all crawlers
+User-agent: *
+Allow: /
+Crawl-delay: 5
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 3
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 3
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 3
+
+# Sitemap location
+Sitemap: https://cyware.vercel.app/sitemap.xml
+
+# Allow access to important assets
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
+Allow: /assets/
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /*?*
+Disallow: /*/print$
+Disallow: /*/print/$
+Disallow: /*?print$
+Disallow: /*?*print* 
