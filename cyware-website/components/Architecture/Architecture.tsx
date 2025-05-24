@@ -40,7 +40,7 @@ export function CywarePlatform({ className }: CywarePlatformProps) {
         <div className="mb-12 flex justify-center">
           <a
             href="#"
-            className="flex items-center gap-2 rounded-full border border-white/30 px-6 py-2 text-white transition-colors hover:bg-white/10"
+            className="flex items-center gap-2 rounded-full border border-white/30 px-6 py-2 text-white transition-transform transition-colors duration-200 hover:bg-white/10 hover:scale-105"
           >
             Learn More <ArrowRight className="h-4 w-4" />
           </a>

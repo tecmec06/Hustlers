@@ -32,7 +32,7 @@ export function CywareQuarterback({ className = "" }: CywareQuarterbackProps) {
       </div>
 
       <div className={styles.buttonContainer}>
-        <button className={styles.button}>
+        <button className={`${styles.button} transition-transform duration-200 hover:scale-105`}>
           <Sparkles className={styles.buttonIcon} />
           <span>Cyware Quarterback AI</span>
           <span className={styles.buttonArrow}>→</span>

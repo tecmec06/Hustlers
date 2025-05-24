@@ -73,6 +73,7 @@ export default function Hero() {
           src="https://go.cyware.com/hs-fs/hubfs/Screenshot%202025-02-12%20at%204.21.58%20PM.png?width=1500&height=1272&name=Screenshot%202025-02-12%20at%204.21.58%20PM.png"
           alt="AI Threat Intel"
           className="w-full h-full object-cover"
+          title ='Threat Intelligence'
         />
       </div>
       {/* Logo Carousel */}
