@@ -16,7 +16,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: 'https://www.cyware.vercel.app/:path*',
+        source: '/:path*',
         destination: 'https://cyware.vercel.app/:path*',
         permanent: true,
         has: [
