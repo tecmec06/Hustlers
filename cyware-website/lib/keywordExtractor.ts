@@ -56,7 +56,7 @@ export async function generateAndFetchKeywords(): Promise<string[]> {
 
   const json = await response.json()
   const rawText = json?.candidates?.[0]?.content?.parts?.[0]?.text ?? ''
-  const keywords = rawText.split(',').map(kw => kw.trim().toLowerCase()).filter(Boolean)
+  const keywords = rawText.split(',').map((kw: string) => kw.trim().toLowerCase()).filter(Boolean)
 
   if (keywords.length === 0) throw new Error('No keywords generated')
   return keywords

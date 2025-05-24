@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server'
-import { extractKeywords, shiftLastGeneratedBack} from '@/lib/keywordExtractor'
+import { extractKeywords} from '@/lib/keywordExtractor'
 
 const THIRTY_MINUTES_MS = 35 * 60 * 1000
 
 export async function POST(req: Request) {
   try {
     // Invalidate keyword cache by going back 30 minutes
-    shiftLastGeneratedBack(THIRTY_MINUTES_MS)
+    // shiftLastGeneratedBack(THIRTY_MINUTES_MS)
 
     // Generate fresh keywords
     const [keywords, description, quote] = await extractKeywords()
