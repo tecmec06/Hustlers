@@ -44,7 +44,7 @@ export default function Navbar() {
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center">
               <SeoImage
-                src="https://images.ctfassets.net/zcd9ovevodsf/5hMiOaLhP23VkyyE4RDfqL/df2b83c535d0a063c407753014faf930/cyware-logo.svg"
+                src="/CywareMain.svg"
                 name="Cyware"
                 width={150}
                 height={40}
@@ -163,7 +163,7 @@ export default function Navbar() {
                 <div className="flex flex-col gap-6 py-6">
                   <Link href="/" className="flex items-center">
                     <Image
-                      src="https://images.ctfassets.net/zcd9ovevodsf/5hMiOaLhP23VkyyE4RDfqL/df2b83c535d0a063c407753014faf930/cyware-logo.svg"
+                      src="/CywareMain.svg"
                       alt="Cyware"
                       width={150}
                       height={40}
