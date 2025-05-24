@@ -3,30 +3,65 @@
 import React from 'react';
 import LogoCarousel from './LogoCarousel';
 import { partnerLogos } from '@/lib/data/partnerLogos';
+import { useTypewriter } from '../app/hooks/useTypewriter'
+
 export default function Hero() {
+  const fullText = 'Outpace Threats with AI-Powered Threat Intel Management'
+  const typedText = useTypewriter(fullText, 25)
+
+  const specialPhrase = 'AI-Powered Threat Intel'
+  const specialStart = fullText.indexOf(specialPhrase)
+  const specialEnd = specialStart + specialPhrase.length
+
   return (
     <section className="relative z-10 py-20 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-start justify-between">
           {/* Left Content */}
           <div className="lg:w-1/2 w-full text-white">
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Outpace Threats with <br />
-              <span className="text-[#c9d2f1]">AI-Powered Threat Intel</span> <br />
-              Management
-            </h1>
+            <div className="min-h-[11.5rem] mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+                {typedText.length <= specialStart ? (
+                  <>
+                    {typedText}
+                    <span className="animate-blink inline-block w-[1px] h-[1em] bg-white ml-1 align-bottom" />
+                  </>
+                ) : typedText.length <= specialEnd ? (
+                  <>
+                    {fullText.slice(0, specialStart)}
+                    <br />
+                    <span className="text-[#c9d2f1]">
+                      {typedText.slice(specialStart)}
+                      <span className="animate-blink inline-block w-[1px] h-[1em] bg-[#c9d2f1] ml-1 align-bottom" />
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    {fullText.slice(0, specialStart)}
+                    <br />
+                    <span className="text-[#c9d2f1]">
+                      {fullText.slice(specialStart, specialEnd)}
+                    </span>
+                    <br />
+                    {typedText.slice(specialEnd)}
+                    <span className="animate-blink inline-block w-[1px] h-[1em] bg-white ml-1 align-bottom" />
+                  </>
+                )}
+              </h1>
+            </div>
+
             <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-xl">
               Secure your organization with our Continuous Threat Operationalization Platform that operationalizes intelligence and boosts collaboration
             </p>
 
             <div className="flex flex-wrap gap-4">
-            <button className="border border-white/60 flex items-center gap-2 rounded-full bg-[#004e3c] hover:bg-[#00624d] text-white px-6 py-3 text-sm font-medium transition">
-                    Get a Demo
+              <button className="border border-white/60 flex items-center gap-2 rounded-full bg-[#004e3c] hover:bg-[#00624d] text-white px-6 py-3 text-sm font-medium transition">
+                Get a Demo
                 <span className="inline-block text-xl leading-none">→</span>
-            </button>
-            <button className="flex items-center gap-2 rounded-full border border-white/60 text-white hover:bg-white/10 px-6 py-3 text-sm font-medium transition">
+              </button>
+              <button className="flex items-center gap-2 rounded-full border border-white/60 text-white hover:bg-white/10 px-6 py-3 text-sm font-medium transition">
                 Learn more
-            </button>
+              </button>
             </div>
           </div>
         </div>
@@ -45,5 +80,5 @@ export default function Hero() {
         <LogoCarousel logos={partnerLogos} />
       </div>
     </section>
-  );
+  )
 }
