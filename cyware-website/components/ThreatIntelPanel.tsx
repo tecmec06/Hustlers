@@ -31,7 +31,7 @@ export default function ThreatIntelPanel({
   return (
     <section className={`mx-16 flex flex-col ${flexDirection} items-center justify-between gap-12 px-6 py-20`}>
       {/* Left Side */}
-      <div className="w-[440px] p-6 rounded-2xl max-w-lg h-[380px] border-dashed border-1 border-[#595c69] flex flex-col justify-between">
+      <div className="w-fit p-6 rounded-2xl max-w-lg h-[380px] border-dashed border-1 border-[#595c69] flex flex-col justify-between">
         {iconSrc && (
           <div className="mb-6">
             <Image src={iconSrc} alt="Panel Icon" width={48} height={48} />
