@@ -10,17 +10,57 @@ const inter = Inter({ subsets: ["latin"] })
 const canonicalDomain = 'https://cyware.vercel.app'
 
 export const metadata: Metadata = {
-  title: "CYWARE",
-  description: "CYWARE website",
+  title: {
+    default: "CYWARE - Cybersecurity Solutions",
+    template: "%s | CYWARE"
+  },
+  description: "CYWARE provides advanced cybersecurity solutions and threat intelligence to protect your organization from evolving cyber threats.",
   metadataBase: new URL(canonicalDomain),
-  alternates: {
-    canonical: '/',
+  keywords: ["cybersecurity", "threat intelligence", "security solutions", "cyber threats", "security platform"],
+  authors: [{ name: "CYWARE" }],
+  creator: "CYWARE",
+  publisher: "CYWARE",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
   openGraph: {
     url: canonicalDomain,
     siteName: 'CYWARE',
     locale: 'en_US',
     type: 'website',
+    title: 'CYWARE - Cybersecurity Solutions',
+    description: 'Advanced cybersecurity solutions and threat intelligence platform',
+    images: [
+      {
+        url: `${canonicalDomain}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'CYWARE Cybersecurity Solutions',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CYWARE - Cybersecurity Solutions',
+    description: 'Advanced cybersecurity solutions and threat intelligence platform',
+    images: [`${canonicalDomain}/og-image.jpg`],
+    creator: '@cyware',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'rwUdlrc9e1M9tS0FgIsu_aue0clcFhayP3BGOC9IkqY',
   },
 }
 
@@ -33,8 +73,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/cyware-logo.svg" sizes="32x32" />
-        <link rel="canonical" href={canonicalDomain} />
-        <meta name="google-site-verification" content="rwUdlrc9e1M9tS0FgIsu_aue0clcFhayP3BGOC9IkqY" />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
