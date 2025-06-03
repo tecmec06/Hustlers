@@ -126,7 +126,21 @@ export async function generateAndFetchKeywords(): Promise<string[]> {
 
   console.log("final_keywords", final_keywords)
 
-  if (final_keywords.length === 0) throw new Error('No keywords generated')
+  if (final_keywords.length === 0) {
+    console.warn('No keywords generated, using hardcoded fallback keywords')
+    return [
+      'threat intelligence',
+      'cybersecurity platform',
+      'security automation',
+      'malware detection',
+      'zero-day vulnerabilities',
+      'incident response',
+      'threat hunting',
+      'security orchestration',
+      'cyber threat analysis',
+      'security information management'
+    ]
+  }
   return final_keywords
 }
 
